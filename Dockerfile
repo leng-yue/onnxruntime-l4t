@@ -20,5 +20,5 @@ RUN pip3 install setuptools wheel pybind11 pytest
 WORKDIR /onnxruntime
 
 # Install wheel
-RUN wget https://nvidia.box.com/shared/static/arhrs7n5ufg7r0iqbtd4jynvvhc8bymh -O onnxruntime_gpu-1.8.0-cp39-cp39-linux_aarch64.whl && \
-    pip3 install onnxruntime_gpu-1.8.0-cp39-cp39-linux_aarch64.whl
+RUN wget https://github.com/leng-yue/onnxruntime-l4t/releases/download/v1.8.0/onnxruntime_gpu_tensorrt-1.8.0-cp39-cp39-linux_aarch64.whl && \
+    pip3 install onnxruntime_gpu_tensorrt-1.8.0-cp39-cp39-linux_aarch64.whl

@@ -13,15 +13,15 @@ RUN apt-get install -y --no-install-recommends python3.9 python3-pip python3.9-d
 
 # Update cmake
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.21.0/cmake-3.21.0-linux-aarch64.sh && \
-    apt-get -y remove cmake && mv cmake-3.21.0-linux-aarch64.sh /opt && cd /opt && \
-    chmod +x cmake-3.21.0-linux-aarch64.sh && bash cmake-3.21.0-linux-aarch64.sh --skip-license && \
-    ln -s /opt/cmake-3.21.0-linux-aarch64/bin/* /usr/local/bin
+    apt-get -y remove cmake && mv cmake-3.21.0-linux-aarch64.sh /opt && cd /opt && mkdir cmake && \
+    chmod +x cmake-3.21.0-linux-aarch64.sh && bash cmake-3.21.0-linux-aarch64.sh --prefix=cmake --skip-license && \
+    ln -s /opt/cmake/bin/* /usr/local/bin
 
 # Install base packages
 RUN python3.9 -m venv /venv
 ENV PATH=/venv/bin:$PATH
 RUN pip3 install --upgrade pip
-RUN pip3 install setuptools wheel pybind11 pytest
+RUN pip3 install setuptools wheel pybind11 pytest numpy
 
 # Build onnxruntime
 WORKDIR /root
