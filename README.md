@@ -1,5 +1,5 @@
 # ONNXRuntime L4T Docker Builder
-[<img src="https://img.shields.io/badge/dockerhub-images-informational.svg?logo=docker">](https://hub.docker.com/repository/docker/lengyue233/onnxruntime-l4t/)
+[<img src="https://img.shields.io/badge/ghcr.io-images-informational.svg?logo=docker">](https://github.com/leng-yue/onnxruntime-l4t/packages)
 
 This repo use github action to build docker image for L4T
 

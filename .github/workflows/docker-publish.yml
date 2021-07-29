@@ -21,8 +21,9 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v1 
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - 
         name: Build and Push
         id: docker_build
@@ -31,6 +32,6 @@ jobs:
           push: true
           context: .
           platforms: linux/arm64
-          tags: lengyue233/onnxruntime-l4t:latest,lengyue233/onnxruntime-l4t:l4t-32.5-py-3.9-ort-1.8
+          tags: ghcr.io/${{ github.repository_owner }}/onnxruntime-l4t:latest,ghcr.io/${{ github.repository_owner }}/onnxruntime-l4t:l4t-32.5-py-3.9-ort-1.8
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
