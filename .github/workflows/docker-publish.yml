@@ -4,11 +4,12 @@ on:
   push:
     branches: [ main ]
 jobs:
-  push_to_registry:
+  build:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the repo
+      - 
+        name: Checkout the repo
         uses: actions/checkout@v2
       -
         name: Set up QEMU
@@ -30,6 +31,8 @@ jobs:
           push: true
           context: .
           platforms: linux/arm64
-          tags: lengyue233/onnxruntime-l4t:latest
+          tags: 
+            - lengyue233/onnxruntime-l4t:latest
+            - lengyue233/onnxruntime-l4t:l4t-32.5-py-3.9-ort-1.8
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
