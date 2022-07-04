@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/l4t-base:r32.5.0
+FROM nvcr.io/nvidia/l4t-base:r32.7.1
 
 # Ensure apt-get won't prompt for selecting options
 ENV DEBIAN_FRONTEND=noninteractive
@@ -25,5 +25,5 @@ RUN pip3 install setuptools wheel pybind11 pytest numpy
 
 # Build onnxruntime
 WORKDIR /root
-RUN git clone --branch v1.8.0 https://github.com/microsoft/onnxruntime.git && cd onnxruntime && \
+RUN git clone --branch v1.11.1 https://github.com/microsoft/onnxruntime.git && cd onnxruntime && \
     ./build.sh --config Release --update --build --build_wheel --cudnn_home /usr/lib/aarch64-linux-gnu --cuda_home /usr/local/cuda --use_tensorrt --tensorrt_home /usr/src/tensorrt --parallel

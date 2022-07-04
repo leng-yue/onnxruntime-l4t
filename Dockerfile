@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/l4t-base:r32.5.0
+FROM nvcr.io/nvidia/l4t-base:r32.7.1
 
 # Ensure apt-get won't prompt for selecting options
 ENV DEBIAN_FRONTEND=noninteractive
@@ -17,8 +17,6 @@ ENV PATH=/venv/bin:$PATH
 RUN pip3 install --upgrade pip
 RUN pip3 install setuptools wheel pybind11 pytest
 
-WORKDIR /onnxruntime
-
 # Install wheel
-RUN wget https://github.com/leng-yue/onnxruntime-l4t/releases/download/v1.8.0/onnxruntime_gpu_tensorrt-1.8.0-cp39-cp39-linux_aarch64.whl && \
-    pip3 install onnxruntime_gpu_tensorrt-1.8.0-cp39-cp39-linux_aarch64.whl
+RUN wget https://nvidia.box.com/shared/static/jmomlpcctmjojz14zbwa12lxmeh2h6o5.whl -O onnxruntime_gpu-1.11.0-cp39-cp39-linux_aarch64.whl && \
+    pip3 install --no-cache-dir onnxruntime_gpu-1.11.0-cp39-cp39-linux_aarch64.whl && rm onnxruntime_gpu-1.11.0-cp39-cp39-linux_aarch64.whl
